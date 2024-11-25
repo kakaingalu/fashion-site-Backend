@@ -1,4 +1,7 @@
 // server.mjs
+// import dotenv
+import dotenv from 'dotenv';
+
 import express from 'express';
 import mysql from 'mysql2/promise';
 import cors from 'cors';
@@ -11,9 +14,10 @@ import moment from 'moment';
 import fs from 'fs-extra';
 
 
+dotenv.config();
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 
 
@@ -124,9 +128,11 @@ async function connectToMySQL() {
   
   try {
     await pool.query(createDbQuery);
-    console.log(`Database ${process.env.DB.NAME} created successfully`);
+    console.log(`Database ${process.env.DB_NAME} created successfully`);
   } catch (error) {
     console.error('Error creating database:', error);
+    // console.log('Environment variables:', process.env);
+
   }
 }
 
