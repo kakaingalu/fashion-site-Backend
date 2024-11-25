@@ -28,7 +28,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 
-const uploadDir = path.join(__dirname, 'uploads');
+const uploadDir = path.join(__dirname, 'public', 'uploads');
 
 // Function to create the upload directory if it doesn't exist
 async function ensureUploadDirectory() {
@@ -108,7 +108,8 @@ const dbConfig = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database:  process.env.DB_NAME
+  database:  process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
 };
 
 // Connect to MySQL
@@ -118,12 +119,12 @@ async function connectToMySQL() {
 
   // Create the database if it doesn't exist
   const createDbQuery = `
-    CREATE DATABASE IF NOT EXISTS fashion_db;
+    CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};
   `;
   
   try {
     await pool.query(createDbQuery);
-    console.log('Database "fashion_db" created successfully');
+    console.log(`Database ${process.env.DB.NAME} created successfully`);
   } catch (error) {
     console.error('Error creating database:', error);
   }
