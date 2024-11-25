@@ -2,7 +2,7 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
 import cors from 'cors';
-import errorHandler from '../fashion-site-frontend/errorHandler.js';
+import errorHandler from './errorHandler.js';
 // import fs from 'fs';
 import multer from 'multer';
 import path, {dirname} from 'path';
@@ -88,7 +88,7 @@ app.use(errorHandler);
 
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://fashion-site-04h0.onrender.com/'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

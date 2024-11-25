@@ -2,7 +2,7 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
 import cors from 'cors';
-import errorHandler from '../fashion-site-frontend/errorHandler.js';
+import errorHandler from './errorHandler.js';
 import fs from 'fs';
 import multer from 'multer';
 import path, {dirname} from 'path';
