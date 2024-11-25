@@ -421,8 +421,11 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
+//PUBLIC IP
+const PUBLIC_IP = process.env.PUBLIC_IP || '0.0.0.0';
+
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
+app.listen(PORT, PUBLIC_IP, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
