@@ -411,22 +411,22 @@ app.delete('/api/delete-image/:filename', async (req, res) => {
 });
 
 
-// app.listen(port, () => {
-//   console.log(`Server listening at http://localhost:${port}`);
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+});
+
+// app.use(express.static(path.join(__dirname, 'build')));
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build/index.html'));
 // });
 
-app.use(express.static(path.join(__dirname, 'build')));
+// //PUBLIC IP
+// const PUBLIC_IP = process.env.PUBLIC_IP || '0.0.0.0';
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build/index.html'));
-});
-
-//PUBLIC IP
-const PUBLIC_IP = process.env.PUBLIC_IP || '0.0.0.0';
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, PUBLIC_IP, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 3001;
+// app.listen(PORT, PUBLIC_IP, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
 
 export { app }; 
